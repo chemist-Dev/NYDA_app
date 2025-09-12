@@ -33,9 +33,8 @@ const DonationsPage = () => {
   ];
 
   const handleDonation = (method: "vodafone" | "instapay") => {
-    const amount = donationAmount || "50";
     if (method === "vodafone") {
-      window.open(`tel:+201010000000`, "_blank");
+      window.open(`tel:+201060741670`, "_blank");
     } else {
       window.open("https://www.instapay.eg/", "_blank");
     }

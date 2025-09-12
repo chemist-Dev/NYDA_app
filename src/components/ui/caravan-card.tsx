@@ -1,6 +1,6 @@
 import { Calendar, MapPin, Users } from "lucide-react";
 import { Card, CardContent, CardHeader } from "./card";
-import { Badge } from "../ui/badge";
+import { Badge } from "./badge";
 
 interface CaravanCardProps {
   title: string;

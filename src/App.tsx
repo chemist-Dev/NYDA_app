@@ -8,7 +8,7 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
-// import Caravans from "./pages/Caravans";
+import Caravans from "./pages/Caravans";
 // import Testimonials from "./pages/Testimonials";
 import DonationsPage from "./pages/Donations";
 // import Contact from "./pages/Contact";
@@ -30,7 +30,8 @@ const App = () => (
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/donations" element={<DonationsPage />} />
-            {/* <Route path="/caravans" element={<Caravans />} />
+            <Route path="/caravans" element={<Caravans />} />
+            {/* 
             <Route path="/testimonials" element={<Testimonials />} />
             
             <Route path="/contact" element={<Contact />} />  */}
