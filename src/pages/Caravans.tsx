@@ -4,8 +4,8 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import { Calendar, Filter, MapPin } from "lucide-react";
 import caravan from "../assets/caravan.jpg";
-import caravan1 from "../assets/caravan.jpg";
-import caravan2 from "../assets/caravan.jpg";
+import caravan1 from "../assets/caravan-1.jpg";
+import caravan2 from "../assets/caravan-2.jpg";
 
 const Caravans = () => {
   const [filter, setFilter] = useState<"all" | "completed" | "upcoming">("all");
@@ -33,14 +33,14 @@ const Caravans = () => {
     },
     {
       id: 2,
-      title: "قافلة أسنان متخصصة - مركز الدلنجات",
-      date: "22 ديسمبر 2024",
-      location: "مركز الدلنجات، البحيرة",
+      title: "قافلة طبية متخصصة - قرية بلال",
+      date: "19 سبتمبر 2025",
+      location: "قرية بلال، النوبارية ، بحيرة",
       beneficiaries: 180,
       image: caravan2,
-      status: "completed" as const,
+      status: "upcoming" as const,
       description:
-        "قافلة متخصصة في طب الأسنان قدمت فحوصات شاملة للفم والأسنان، علاج تسوس الأسنان، تنظيف الأسنان، وتوعية صحية شاملة حول نظافة الفم والأسنان للأطفال والكبار.",
+        "قافلة متخصصة في جميع التخصصات الباطنة و الأسنان والنسا  قدمت علاج مجاني وتوعية صحية .",
     },
     {
       id: 3,
@@ -117,7 +117,7 @@ const Caravans = () => {
           <div className="bg-gradient-card border-border/50 rounded-lg p-6 text-center shadow-soft">
             <div className="text-3xl font-bold text-primary mb-2">
               {caravans.length}
-              <div className="text-muted-foreground">إجمالي القواقل</div>
+              <div className="text-muted-foreground">إجمالي القوافل</div>
             </div>
           </div>
 

@@ -1,6 +1,6 @@
 import { Heart, Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "../../../public/logo-Di2KzSP2.png";
+import logo from "/logo-Di2KzSP2.png";
 
 const Footer = () => {
   return (
@@ -87,7 +87,13 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3 space-x-reverse">
                 <MapPin className="h-4 w-4" />
-                <span className="text-sm">غرب النوباريةّ، البحيرة، مصر</span>
+                <a
+                  href="https://www.google.com/maps/place/%D8%A7%D9%84%D9%86%D9%88%D8%A8%D8%A7%D8%B1%D9%8A%D8%A9+%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9%E2%80%AD/@30.6541831,30.074971,13.92z/data=!4m6!3m5!1s0x145f53500a636ce1:0x4e416d0e2e3ecbb5!8m2!3d30.6636218!4d30.0864782!16s%2Fg%2F11tk0pcb2r?entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  className="text-sm"
+                >
+                  غرب النوباريةّ، البحيرة، مصر
+                </a>
               </div>
             </div>
           </div>
@@ -97,7 +103,8 @@ const Footer = () => {
             <h3 className="text-lg font-semibold">تابعنا</h3>
             <div className="flex space-x-4 space-x-reverse">
               <a
-                href="#"
+                href="https://www.facebook.com/noubaria.doctors"
+                target="_blank"
                 className="p-2 bg-primary-foreground/10 rounded-lg hover:bg-primary-foreground/20 transition-colors"
               >
                 <Facebook className="h-5 w-5" />
