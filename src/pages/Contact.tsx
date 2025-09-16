@@ -66,7 +66,13 @@ const Contact = () => {
       return;
     }
 
-    await fsHandleSubmit(e);
+    await fsHandleSubmit({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+    });
   };
 
   const handleInputChange = (field: string, value: string) => {
