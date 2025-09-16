@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../components/ui/button";
 import {
   Card,
@@ -10,6 +10,8 @@ import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import { Label } from "../components/ui/label";
 import { useToast } from "../hooks/use-toast";
+import { useForm, ValidationError } from "@formspree/react";
+
 import {
   Phone,
   Mail,
@@ -22,6 +24,7 @@ import {
 } from "lucide-react";
 
 const Contact = () => {
+  const [fsState, fsHandleSubmit] = useForm("mkgvlnka");
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -31,7 +34,27 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    if (fsState.succeeded) {
+      toast({
+        title: "تم إرسال رسالتك بنجاح",
+        description: "سنتواصل معك في أقرب وقت ممكن",
+      });
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    } else if (
+      fsState.errors &&
+      Array.isArray(fsState.errors) &&
+      fsState.errors.length > 0
+    ) {
+      toast({
+        title: "حدث خطأ",
+        description: "تعذر إرسال الرسالة. حاول مرة أخرى.",
+        variant: "destructive",
+      });
+    }
+  }, [fsState.succeeded, fsState.errors, toast]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.message) {
@@ -43,18 +66,7 @@ const Contact = () => {
       return;
     }
 
-    toast({
-      title: "تم إرسال رسالتك بنجاح",
-      description: "سنتواصل معك في أقرب وقت ممكن",
-    });
-
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-    });
+    await fsHandleSubmit(e);
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -150,7 +162,17 @@ const Contact = () => {
               </CardHeader>
               <CardContent>
                 <div className="flex space-x-4 space-x-reverse">
-                  <Button variant="outline" size="lg" className="flex-1">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    onClick={() =>
+                      window.open(
+                        "https://www.facebook.com/noubaria.doctors",
+                        "_blank"
+                      )
+                    }
+                    className="flex-1"
+                  >
                     <Facebook className="ml-2 h-5 w-5" />
                     Facebook
                   </Button>
@@ -209,6 +231,7 @@ const Contact = () => {
                     <Label htmlFor="email">البريد الإلكتروني *</Label>
                     <Input
                       id="email"
+                      name="email" // مهم ل Formspree
                       type="email"
                       value={formData.email}
                       onChange={(e) =>
@@ -216,6 +239,11 @@ const Contact = () => {
                       }
                       placeholder="أدخل بريدك الإلكتروني"
                       required
+                    />
+                    <ValidationError
+                      prefix="Email"
+                      field="email"
+                      errors={fsState.errors}
                     />
                   </div>
 
@@ -236,6 +264,7 @@ const Contact = () => {
                     <Label htmlFor="message">الرسالة *</Label>
                     <Textarea
                       id="message"
+                      name="message" // مهم ل Formspree
                       value={formData.message}
                       onChange={(e) =>
                         handleInputChange("message", e.target.value)
@@ -244,9 +273,18 @@ const Contact = () => {
                       rows={6}
                       required
                     />
+                    <ValidationError
+                      prefix="Message"
+                      field="message"
+                      errors={fsState.errors}
+                    />
                   </div>
 
-                  <Button type="submit" className="w-full shadow-medium">
+                  <Button
+                    type="submit"
+                    className="w-full shadow-medium"
+                    disabled={fsState.submitting}
+                  >
                     <Send className="ml-2 h-4 w-4" />
                     إرسال الرسالة
                   </Button>
