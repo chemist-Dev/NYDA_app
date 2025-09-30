@@ -1,7 +1,7 @@
 import { Button } from "../ui/button";
 import { ArrowLeft, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "../../assets/hero-doctors.jpg";
+import heroImage from "/hero-doctors.jpg";
 
 const HeroSection = () => {
   return (
@@ -42,15 +42,15 @@ const HeroSection = () => {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-6 mb-8 animate-fade-in">
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">50+</div>
+              <div className="text-3xl font-bold text-accent mb-2">25+</div>
               <div className="text-sm opacity-90">قافلة طبية</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">5000+</div>
+              <div className="text-3xl font-bold text-accent mb-2">5500+</div>
               <div className="text-sm opacity-90">مستفيد</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">25+</div>
+              <div className="text-3xl font-bold text-accent mb-2">35+</div>
               <div className="text-sm opacity-90">طبيب متطوع</div>
             </div>
           </div>
@@ -72,7 +72,7 @@ const HeroSection = () => {
               asChild
               variant="outline"
               size="lg"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+              className="border-primary-foreground/30 text-black hover:bg-primary-foreground/10"
             >
               <Link to="/about">عن الرابطة</Link>
             </Button>

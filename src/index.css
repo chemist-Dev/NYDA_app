@@ -22,13 +22,13 @@ All colors MUST be HSL.
     --popover-foreground: 210 15% 15%;
 
     /* Medical blue primary palette */
-    --primary: 210 70% 50%;
+    --primary: 222 75% 45%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 210 70% 60%;
-    --primary-dark: 210 70% 40%;
+    --primary-light: 210 75% 55%;
+    --primary-dark: 210 75% 35%;
 
     /* Professional secondary palette */
-    --secondary: 210 20% 96%;
+    --secondary: 200 75% 97%;
     --secondary-foreground: 210 15% 15%;
 
     /* Muted colors for subtle elements */
@@ -36,9 +36,9 @@ All colors MUST be HSL.
     --muted-foreground: 210 10% 45%;
 
     /* Health green accent */
-    --accent: 142 70% 50%;
+    --accent: 185 75% 45%;
     --accent-foreground: 0 0% 100%;
-    --accent-light: 142 70% 60%;
+    --accent-light: 185 75% 55%;
 
     /* Status colors */
     --destructive: 0 84% 60%;
@@ -54,13 +54,13 @@ All colors MUST be HSL.
     /* Gradients */
     --gradient-primary: linear-gradient(
       135deg,
-      hsl(210, 70%, 50%),
-      hsl(210, 70%, 40%)
+      hsl(210, 75%, 45%),
+      hsl(185, 75%, 45%)
     );
     --gradient-hero: linear-gradient(
       135deg,
-      hsl(210, 70%, 50%),
-      hsl(142, 70%, 50%)
+      hsl(210, 75%, 45%),
+      hsl(185, 75%, 45%)
     );
     --gradient-card: linear-gradient(
       145deg,

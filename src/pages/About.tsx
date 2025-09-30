@@ -49,17 +49,17 @@ const About = () => {
 
   const achievements = [
     {
-      number: "50+",
+      number: "25+",
       title: "قافلة طبية",
       description: "منذ تأسيس الجمعية",
     },
     {
-      number: "5000+",
+      number: "5500+",
       title: "مستفيد",
       description: "من خدماتنا الطبية",
     },
     {
-      number: "25+",
+      number: "35+",
       title: "طبيب متطوع",
       description: "في فريق العمل",
     },

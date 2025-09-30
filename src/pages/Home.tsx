@@ -1,13 +1,14 @@
 import "../index.css";
 import HeroSection from "../components/ui/hero-section";
+import VideoSection from "../components/VideoSection";
 import CaravanCard from "../components/ui/caravan-card";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { Heart, Shield, Users, Target, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 // import caravan1 from "../assets/caravan-1.jpg";
-import caravan2 from "../assets/caravan-2.jpg";
-import caravan from "../assets/caravan.jpg";
+import belal2 from "/belal2.jpg";
+import caravan from "/caravan.jpg";
 
 const Home = () => {
   const recentCaravans = [
@@ -26,8 +27,8 @@ const Home = () => {
       date: "19 سبتمبر 2025",
       location: "قرية بلال، النوبارية ، بحيرة",
       beneficiaries: 180,
-      image: caravan2,
-      status: "upcoming" as const,
+      image: belal2,
+      status: "completed" as const,
       description:
         "قافلة متخصصة في جميع التخصصات الباطنة و الأسنان والنسا  قدمت علاج مجاني وتوعية صحية .",
     },
@@ -64,7 +65,8 @@ const Home = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <HeroSection />
-
+      {/* {video section} */}
+      <VideoSection />
       {/* About Section */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
@@ -159,7 +161,7 @@ const Home = () => {
               asChild
               size="lg"
               variant="outline"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+              className="border-primary-foreground/30 text-black hover:bg-primary-foreground/10"
             >
               <Link to="/about">تعرف على فريقنا</Link>
             </Button>

@@ -77,7 +77,7 @@ const Header = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`block text-sm font-medium transition-colors hover:text-primary ${
+                className={`block text-md mr-4 font-medium transition-colors hover:text-primary ${
                   isActive(item.path) ? "text-primary" : "text-foreground"
                 }`}
                 onClick={() => setIsMenuOpen(false)}

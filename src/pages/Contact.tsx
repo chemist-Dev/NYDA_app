@@ -19,7 +19,7 @@ import {
   Clock,
   Send,
   Facebook,
-  Instagram,
+  Twitter,
   MessageCircle,
 } from "lucide-react";
 
@@ -86,7 +86,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "رقم الهاتف",
-      value: "+20 123 456 7890",
+      value: "5194 958 100 20+",
       description: "للاستفسارات والتواصل المباشر",
     },
     {
@@ -98,7 +98,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "العنوان",
-      value: "النوبارية، محافظة البحيرة، مصر",
+      value: "النوبارية، محافظة البحيرة، مصر ",
       description: "مقر الرابطة الرئيسي",
     },
     {
@@ -173,7 +173,7 @@ const Contact = () => {
                     size="lg"
                     onClick={() =>
                       window.open(
-                        "https://www.facebook.com/noubaria.doctors",
+                        "https://www.facebook.com/NoubariaDoctor",
                         "_blank"
                       )
                     }
@@ -182,9 +182,16 @@ const Contact = () => {
                     <Facebook className="ml-2 h-5 w-5" />
                     Facebook
                   </Button>
-                  <Button variant="outline" size="lg" className="flex-1">
-                    <Instagram className="ml-2 h-5 w-5" />
-                    Instagram
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="flex-1"
+                    onClick={() =>
+                      window.open("https://x.com/drnoubaria", "_blank")
+                    }
+                  >
+                    <Twitter className="ml-2 h-5 w-5" />
+                    Twitter
                   </Button>
                 </div>
                 <p className="text-sm text-muted-foreground mt-4">
@@ -309,7 +316,7 @@ const Contact = () => {
           <div className="bg-card rounded-lg overflow-hidden shadow-soft">
             <div className="p-4 md:p-6">
               <h3 className="text-xl font-semibold text-foreground mb-4 text-center">
-                النوبارية محافظة البحيرة
+                مدينة النوبارية محافظة البحيرة
               </h3>
               <div className="relative aspect-video w-full">
                 <iframe

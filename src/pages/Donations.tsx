@@ -1,16 +1,58 @@
 import { useState } from "react";
 import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
-import { Heart, Stethoscope, Users, Shield } from "lucide-react";
+import {
+  Heart,
+  Stethoscope,
+  Users,
+  Shield,
+  Wallet,
+  Copy,
+  CheckCircle2,
+  Smartphone,
+  CreditCard,
+} from "lucide-react";
+import { toast } from "sonner";
 
 const DonationsPage = () => {
-  const [donationAmount, setDonationAmount] = useState("");
+  // const [donationAmount, setDonationAmount] = useState("");
+  const [copiedWallet, setCopiedWallet] = useState<string | null>(null);
+
+  const wallets = [
+    {
+      type: "vodafone",
+      number: "01060741670",
+      icon: <Smartphone className="w-6 h-6 text-red-500" />,
+      title: "فودافون كاش",
+      description: "محفظة فودافون كاش الرسمية للرابطة",
+      qrCode: "../../public/Vodfone Cash img.jpg", // Replace with actual QR code
+      color: "text-red-500",
+      bgColor: "bg-red-50",
+    },
+    {
+      type: "instapay",
+      number: "0123456789",
+      icon: <CreditCard className="w-6 h-6 text-blue-500" />,
+      title: "إنستا باي",
+      description: "محفظة إنستا باي الرسمية للرابطة",
+      qrCode: "/placeholder.svg", // Replace with actual QR code
+      color: "text-blue-500",
+      bgColor: "bg-blue-50",
+    },
+  ];
+
+  const copyToClipboard = (text: string, type: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopiedWallet(type);
+      toast.success("تم نسخ الرقم بنجاح!");
+      setTimeout(() => setCopiedWallet(null), 2000);
+    });
+  };
 
   const benefits = [
     {
@@ -32,13 +74,13 @@ const DonationsPage = () => {
     },
   ];
 
-  const handleDonation = (method: "vodafone" | "instapay") => {
-    if (method === "vodafone") {
-      window.open(`tel:+201060741670`, "_blank");
-    } else {
-      window.open("https://www.instapay.eg/", "_blank");
-    }
-  };
+  // const handleDonation = (method: "vodafone" | "instapay") => {
+  //   if (method === "vodafone") {
+  //     window.open(`tel:+201060741670`, "_blank");
+  //   } else {
+  //     window.open("https://www.instapay.eg/", "_blank");
+  //   }
+  // };
 
   return (
     <div
@@ -79,6 +121,72 @@ const DonationsPage = () => {
               ))}
             </div>
 
+            {/* طرق التبرع */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-right flex items-center justify-end gap-2">
+                <span>طرق التبرع</span>
+                <Wallet className="w-6 h-6" />
+              </h3>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                {wallets.map((wallet) => (
+                  <Card
+                    key={wallet.type}
+                    className={`${wallet.bgColor} border-2 border-${wallet.color}`}
+                  >
+                    <CardContent className="p-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() =>
+                            copyToClipboard(wallet.number, wallet.type)
+                          }
+                          className="hover:bg-white/50"
+                        >
+                          {copiedWallet === wallet.type ? (
+                            <CheckCircle2 className="w-5 h-5 text-green-500" />
+                          ) : (
+                            <Copy className="w-5 h-5" />
+                          )}
+                        </Button>
+                        <div className="flex items-center gap-2">
+                          <div>
+                            <h4 className="font-bold text-lg text-right">
+                              {wallet.title}
+                            </h4>
+                            <p className="text-sm text-muted-foreground text-right">
+                              {wallet.description}
+                            </p>
+                          </div>
+                          {wallet.icon}
+                        </div>
+                      </div>
+
+                      <div className="space-y-4">
+                        <div className="bg-white p-4 rounded-lg">
+                          <p
+                            className="text-xl font-mono text-center"
+                            dir="ltr"
+                          >
+                            {wallet.number}
+                          </p>
+                        </div>
+
+                        <div className="flex justify-center">
+                          <img
+                            src={wallet.qrCode}
+                            alt={`QR Code ${wallet.title}`}
+                            className="w-32 h-32"
+                          />
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
             {/* الشفافية */}
             <Card className="bg-secondary/30">
               <CardContent className="p-6">
@@ -103,14 +211,13 @@ const DonationsPage = () => {
             </Card>
 
             {/* نموذج التبرع */}
-            <Card className="bg-gradient-to-l from-primary/5 to-secondary/5">
+            {/* <Card className="bg-gradient-to-l from-primary/5 to-secondary/5">
               <CardHeader>
                 <CardTitle className="text-2xl text-center">
                   تبرع الآن!
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-                {/* اختيار المبلغ */}
                 <div className="text-right">
                   <label className="block text-sm font-medium mb-2">
                     اختر مبلغ التبرع (جنيه)
@@ -139,7 +246,6 @@ const DonationsPage = () => {
                   />
                 </div>
 
-                {/* أزرار التبرع */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
                     onClick={() => handleDonation("vodafone")}
@@ -157,11 +263,11 @@ const DonationsPage = () => {
                   </Button>
                 </div>
 
-                <p className="text-center text-sm text-muted-foreground">
-                  جزاكم الله خيراً على دعمكم لخدمة المجتمع
-                </p>
-              </CardContent>
-            </Card>
+                </CardContent>
+                </Card> */}
+            <p className="text-center text-sm text-muted-foreground">
+              جزاكم الله خيراً على دعمكم لخدمة المجتمع
+            </p>
           </CardContent>
         </Card>
       </div>

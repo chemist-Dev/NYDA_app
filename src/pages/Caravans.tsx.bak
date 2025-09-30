@@ -28,9 +28,114 @@ const Caravans = () => {
     ? filteredCaravans
     : filteredCaravans.slice(0, initialDisplay);
 
-  const completedCount = caravans.filter(
-    (c) => c.status === "completed"
-  ).length;
+  const completedCount = caravans.filter((c) => c.status === "completed").length;
+  const upcomingCount = caravans.filter((c) => c.status === "upcoming").length;
+    if (filter === "all") return true;
+    return caravan.status === filter;
+  });
+
+    {
+      id: 2,
+      title: "قافلة طبية متخصصة واسنان - قرية بلال",
+      date: "3 فبراير 2025",
+      location: "قرية بلال، النوبارية ، بحيرة",
+      beneficiaries: 400,
+      image: Belal,
+      status: "completed" as const,
+      description:
+        "قافلة متخصصة في جميع التخصصات الباطنة و الأسنان والنسا  قدمت علاج مجاني وتوعية صحية .",
+    },
+    {
+      id: 3,
+      title: "قافلة طبية شاملة و نساء وتوليد - قرية شلتوت ",
+      date: "10 سبتمبر 2024",
+      location: "قرية محمود شلتوت، البحيرة",
+      beneficiaries: 120,
+      image: Shaltout,
+      status: "completed" as const,
+      description:
+        "قافلة متخصصة لصحة المرأة تضمنت فحوصات نسائية، متابعة الحمل، توعية حول الصحة الإنجابية، وتوزيع الفيتامينات اللازمة للحوامل والمرضعات في المنطقة.",
+    },
+    {
+      id: 5,
+      title: "قافلة أطفال -  قرية العدل",
+      date: "1 ديسمبر 2024",
+      location: "قرية العدل ،  البحيرة ",
+      beneficiaries: 200,
+      image: Aladel,
+      status: "completed" as const,
+      description:
+        "قافلة مخصصة للأطفال شملت فحوصات طبية شاملة، تطعيمات، قياس الطول والوزن، علاج سوء التغذية، وجلسات توعية للأمهات حول التغذية السليمة والعناية بالأطفال.",
+    },
+    {
+      id: 6,
+      title: "قافلة طبية عامة - قرية  ابو اليسر",
+      date: "20 يوليو 2024",
+      location: "قرية  ابو اليسر، البحيرة",
+      beneficiaries: 0,
+      image: AboYouser,
+      status: "completed" as const,
+      description:
+        "قافلة متخصصة في الجراحة العامة ستقدم استشارات جراحية، فحوصات ما قبل العمليات، وعمليات جراحية بسيطة. كما ستتضمن توعية حول أهمية الفحص المبكر للأورام.",
+    },
+    {
+      id: 7,
+      title: "قافلة عيون - مركز وادي النطرون",
+      date: "18 يناير 2025",
+      location: "مركز وادي النطرون، البحيرة",
+      beneficiaries: 0,
+      image: caravan2,
+      status: "completed" as const,
+      description:
+        "قافلة طبية متخصصة في أمراض العيون ستقدم فحوصات شاملة للعين، قياس النظر، علاج أمراض الشبكية، وتوزيع نظارات طبية مجانية للمحتاجين في المنطقة.",
+    },
+    {
+      id: 7,
+      title: "قافلة عيون - مركز وادي النطرون",
+      date: "18 يناير 2025",
+      location: "مركز وادي النطرون، البحيرة",
+      beneficiaries: 0,
+      image: caravan2,
+      status: "completed" as const,
+      description:
+        "قافلة طبية متخصصة في أمراض العيون ستقدم فحوصات شاملة للعين، قياس النظر، علاج أمراض الشبكية، وتوزيع نظارات طبية مجانية للمحتاجين في المنطقة.",
+    },
+    {
+      id: 7,
+      title: "قافلة عيون - مركز وادي النطرون",
+      date: "18 يناير 2025",
+      location: "مركز وادي النطرون، البحيرة",
+      beneficiaries: 0,
+      image: caravan2,
+      status: "completed" as const,
+      description:
+        "قافلة طبية متخصصة في أمراض العيون ستقدم فحوصات شاملة للعين، قياس النظر، علاج أمراض الشبكية، وتوزيع نظارات طبية مجانية للمحتاجين في المنطقة.",
+    },
+    {
+      id: 7,
+      title: "قافلة عيون - مركز وادي النطرون",
+      date: "18 يناير 2025",
+      location: "مركز وادي النطرون، البحيرة",
+      beneficiaries: 0,
+      image: caravan2,
+      status: "completed" as const,
+      description:
+        "قافلة طبية متخصصة في أمراض العيون ستقدم فحوصات شاملة للعين، قياس النظر، علاج أمراض الشبكية، وتوزيع نظارات طبية مجانية للمحتاجين في المنطقة.",
+    },
+  ];
+  const filteredCaravans = caravans.filter((caravan) => {
+    if (filter === "all") return true;
+    return caravan.status === filter;
+  });
+
+  // عرض القوافل المحدودة أو كلها
+  const displayedCaravans = showAll
+    ? filteredCaravans
+    : filteredCaravans.slice(0, initialDisplay);
+
+  // const completedCount = caravans.filter(
+  //   (c) => c.status === "completed"
+  // ).length;
   const upcomingCount = caravans.filter((c) => c.status === "upcoming").length;
 
   return (
@@ -41,28 +146,28 @@ const Caravans = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             القوافل الطبية
           </h1>
-          <p className="mx-auto text-xl text-muted-foreground max-w-3xl leading-relaxed">
+          <p className=" mx-auto text-xl text-muted-foreground max-w-3xl leading-relaxed">
             تابع جميع القوافل الطبية التي نظمتها الرابطة والقوافل القادمة. كل
             قافلة هي قصة نجاح جديدة في خدمة المجتمع وتقديم الرعاية الصحية
             للمحتاجين.
           </p>
         </div>
 
-        {/* Stats */}
+        {/* stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="bg-gradient-card border-border/50 rounded-lg p-6 text-center shadow-soft">
             <div className="text-3xl font-bold text-primary mb-2">
               {caravans.length}
+              <div className="text-muted-foreground">إجمالي القوافل</div>
             </div>
-            <div className="text-muted-foreground">إجمالي القوافل</div>
           </div>
 
-          <div className="bg-gradient-card border border-border/50 rounded-lg p-6 text-center shadow-soft">
+          {/* <div className="bg-gradient-card border border-border/50 rounded-lg p-6 text-center shadow-soft">
             <div className="text-3xl font-bold text-success mb-2">
               {completedCount}
             </div>
             <div className="text-muted-foreground">قوافل مكتملة</div>
-          </div>
+          </div> */}
 
           <div className="bg-gradient-card border border-border/50 rounded-lg p-6 text-center shadow-soft">
             <div className="text-3xl font-bold text-accent mb-2">
@@ -72,8 +177,8 @@ const Caravans = () => {
           </div>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {/* Filter Buttons  */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12 ">
           <Button
             variant={filter === "all" ? "default" : "outline"}
             onClick={() => setFilter("all")}
@@ -154,19 +259,20 @@ const Caravans = () => {
         )}
 
         {/* News Section */}
-        <section className="bg-muted/30 rounded-lg p-8 md:p-12">
+        <section className="bg-muted/30 rounde-lg p-8 md:p-12">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
             أخبار القوافل الطبية
           </h2>
 
           <div className="space-y-8">
             <div className="bg-card border-border/50 rounded-lg p-6 shadow-soft">
-              <div className="flex items-start space-x-4 space-x-reverse">
+              <div className="flex items-start space-x-4 space-x-reverse ">
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                     <Calendar className="h-6 w-6 text-primary" />
                   </div>
                 </div>
+
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 space-x-reverse mb-2">
                     <h3 className="text-lg font-semibold text-foreground">
