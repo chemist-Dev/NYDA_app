@@ -1,7 +1,7 @@
 import { Button } from "../ui/button";
 import { ArrowLeft, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "/nyda.jpg";
+import heroImage from "/hero-doctors.jpg";
 
 const HeroSection = () => {
   return (
@@ -42,7 +42,7 @@ const HeroSection = () => {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-6 mb-8 animate-fade-in">
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">25+</div>
+              <div className="text-3xl font-bold text-accent mb-2">28+</div>
               <div className="text-sm opacity-90">قافلة طبية</div>
             </div>
             <div className="text-center">

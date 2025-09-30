@@ -15,7 +15,6 @@ import {
   Copy,
   CheckCircle2,
   Smartphone,
-
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -33,7 +32,7 @@ const DonationsPage = () => {
       qrCode: "/Vodfone Cash img.jpg",
       color: "text-red-500",
       bgColor: "bg-red-50",
-    }
+    },
   ];
 
   const copyToClipboard = (text: string, type: string) => {
@@ -183,12 +182,12 @@ const DonationsPage = () => {
                 <p className="text-center text-lg">
                   كل تبرع هيستخدم بشفافية:{" "}
                   <span className="font-semibold text-red-600">
-                    40% للأدوية
+                    30% للأدوية
                   </span>
                   ،
                   <span className="font-semibold text-blue-600">
                     {" "}
-                    30% للقوافل
+                    40% للقوافل
                   </span>
                   ،
                   <span className="font-semibold text-green-600">

@@ -34,13 +34,13 @@ const Caravans = () => {
   const completedCount = caravans.filter(
     (c) => c.status === "completed"
   ).length;
-  const upcomingCount = caravans.filter((c) => c.status === "upcoming").length;
+  // const upcomingCount = caravans.filter((c) => c.status === "upcoming").length;
 
   // Static display counts toggle (preserve dynamic logic for future use)
   const useStaticCounts = true;
   const displayTotalCount = useStaticCounts ? 28 : caravans.length;
   const displayCompletedCount = useStaticCounts ? 28 : completedCount;
-  const displayUpcomingCount = useStaticCounts ? 0 : upcomingCount;
+  // const displayUpcomingCount = useStaticCounts ? 0 : upcomingCount;
 
   return (
     <div className="min-h-screen py-20">
@@ -58,7 +58,7 @@ const Caravans = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           <div className="bg-gradient-card border-border/50 rounded-lg p-6 text-center shadow-soft">
             <div className="text-3xl font-bold text-primary mb-2">
               {displayTotalCount}
@@ -73,12 +73,12 @@ const Caravans = () => {
             <div className="text-muted-foreground">قوافل مكتملة</div>
           </div>
 
-          <div className="bg-gradient-card border border-border/50 rounded-lg p-6 text-center shadow-soft">
+          {/* <div className="bg-gradient-card border border-border/50 rounded-lg p-6 text-center shadow-soft">
             <div className="text-3xl font-bold text-accent mb-2">
               {displayUpcomingCount}
             </div>
             <div className="text-muted-foreground">قوافل قادمة</div>
-          </div>
+          </div> */}
         </div>
 
         {/* Filter Buttons */}
@@ -98,13 +98,13 @@ const Caravans = () => {
           >
             القوافل المكتملة
           </Button>
-          <Button
+          {/* <Button
             variant={filter === "upcoming" ? "default" : "outline"}
             onClick={() => setFilter("upcoming")}
             className="min-w-[120px]"
           >
             القوافل القادمة
-          </Button>
+          </Button> */}
         </div>
 
         {/* Caravans Grid */}

@@ -92,7 +92,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "البريد الإلكتروني",
-      value: "info@nubaria-doctors.org",
+      value: "ahsh09006@gmail.com",
       description: "للرسائل الرسمية والاستفسارات",
     },
     {
