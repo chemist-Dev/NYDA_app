@@ -10,63 +10,63 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Base colors */
-    --background: 0 0% 100%;
-    --foreground: 210 15% 15%;
+    --background: 0 0% 98%; /* Crisp White */
+    --foreground: 200 20% 20%; /* Dark Medical Blue for text */
 
     /* Card colors */
-    --card: 0 0% 100%;
-    --card-foreground: 210 15% 15%;
+    --card: 0 0% 100%; /* Pure White */
+    --card-foreground: 200 20% 20%; /* Dark Medical Blue */
 
     /* Popover colors */
-    --popover: 0 0% 100%;
-    --popover-foreground: 210 15% 15%;
+    --popover: 0 0% 98%; /* Slightly Off-White */
+    --popover-foreground: 200 20% 20%; /* Dark Medical Blue */
 
-    /* Warm energetic medical teal */
-    --primary: 215 90% 48%;
-    --primary-foreground: 0 0% 100%;
-    --primary-light: 195 95% 60%;
-    --primary-dark: 195 85% 36%;
+    /* Primary palette (Medical Blue) */
+    --primary: 209 70% 50%; /* Vibrant Medical Blue */
+    --primary-foreground: 0 0% 100%; /* White */
+    --primary-light: 200 70% 65%; /* Lighter Blue */
+    --primary-dark: 200 70% 40%; /* Darker Blue */
 
-    /* Professional secondary palette (soft clinic paper) */
-    --secondary: 205 60% 97%;
-    --secondary-foreground: 210 15% 15%;
+    /* Secondary palette (Clean Green) */
+    --secondary: 160 60% 85%; /* Soft Clean Green */
+    --secondary-foreground: 200 20% 20%; /* Dark Medical Blue */
 
     /* Muted colors for subtle elements */
-    --muted: 210 25% 95%;
-    --muted-foreground: 210 10% 45%;
+    --muted: 200 15% 90%; /* Light Grayish Blue */
+    --muted-foreground: 200 15% 40%; /* Mid-tone Grayish Blue */
 
-    /* Phosphoric fresh accent */
-    --accent: 120 95% 58%;
-    --accent-foreground: 0 0% 100%;
-    --accent-light: 120 95% 68%;
+    /* Accent (Warm Beige) */
+    --accent: 30 30% 90%; /* Warm Beige */
+    --accent-foreground: 200 20% 20%; /* Dark Medical Blue */
+    --accent-light: 30 30% 95%; /* Lighter Beige */
 
     /* Status colors */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --success: 142 70% 50%;
-    --success-foreground: 0 0% 100%;
+    --destructive: 0 50% 60%; /* Subtle Medical Red */
+    --destructive-foreground: 0 0% 100%; /* White */
+    --success: 160 60% 50%; /* Fresh Green */
+    --success-foreground: 0 0% 100%; /* White */
 
     /* Border and input colors */
-    --border: 210 20% 90%;
-    --input: 210 20% 90%;
-    --ring: 195 90% 48%;
+    --border: 200 15% 85%; /* Light Grayish Blue */
+    --input: 200 15% 85%; /* Light Grayish Blue */
+    --ring: 200 70% 50%; /* Medical Blue for focus */
 
     /* Gradients */
     --gradient-primary: linear-gradient(
       135deg,
-      hsl(195, 90%, 48%),
-      hsl(120, 95%, 58%)
-    );
+      hsl(200, 70%, 50%),
+      hsl(160, 60%, 50%)
+    ); /* Blue to Green */
     --gradient-hero: linear-gradient(
       135deg,
-      hsl(195, 90%, 48%),
-      hsl(120, 95%, 58%)
-    );
+      hsl(200, 70%, 50%),
+      hsl(30, 30%, 90%)
+    ); /* Blue to Warm Beige */
     --gradient-card: linear-gradient(
       145deg,
       hsl(0, 0%, 100%),
-      hsl(210, 25%, 98%)
-    );
+      hsl(200, 15%, 95%)
+    ); /* White to Light Grayish Blue */
 
     /* Shadows */
     --shadow-soft: 0 4px 20px -4px hsl(195, 80%, 45%, 0.16);

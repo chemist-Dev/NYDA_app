@@ -117,7 +117,7 @@ const DonationsPage = () => {
                 <Wallet className="w-6 h-6" />
               </h3>
 
-              <div className="grid gap-6 md:grid-cols-2">
+              <div className="grid grid-2 md:grid-cols-1">
                 {wallets.map((wallet) => (
                   <Card
                     key={wallet.type}
@@ -166,7 +166,7 @@ const DonationsPage = () => {
                           <img
                             src={wallet.qrCode}
                             alt={`QR Code ${wallet.title}`}
-                            className="w-32 h-32"
+                            className="w-36 h-36"
                           />
                         </div>
                       </div>
