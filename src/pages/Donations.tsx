@@ -15,7 +15,7 @@ import {
   Copy,
   CheckCircle2,
   Smartphone,
-  CreditCard,
+
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -26,24 +26,14 @@ const DonationsPage = () => {
   const wallets = [
     {
       type: "vodafone",
-      number: "01060741670",
+      number: "01009585194",
       icon: <Smartphone className="w-6 h-6 text-red-500" />,
       title: "فودافون كاش",
       description: "محفظة فودافون كاش الرسمية للرابطة",
-      qrCode: "../../public/Vodfone Cash img.jpg", // Replace with actual QR code
+      qrCode: "/Vodfone Cash img.jpg",
       color: "text-red-500",
       bgColor: "bg-red-50",
-    },
-    {
-      type: "instapay",
-      number: "0123456789",
-      icon: <CreditCard className="w-6 h-6 text-blue-500" />,
-      title: "إنستا باي",
-      description: "محفظة إنستا باي الرسمية للرابطة",
-      qrCode: "/placeholder.svg", // Replace with actual QR code
-      color: "text-blue-500",
-      bgColor: "bg-blue-50",
-    },
+    }
   ];
 
   const copyToClipboard = (text: string, type: string) => {

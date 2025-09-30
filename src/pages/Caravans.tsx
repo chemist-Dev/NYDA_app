@@ -36,6 +36,12 @@ const Caravans = () => {
   ).length;
   const upcomingCount = caravans.filter((c) => c.status === "upcoming").length;
 
+  // Static display counts toggle (preserve dynamic logic for future use)
+  const useStaticCounts = true;
+  const displayTotalCount = useStaticCounts ? 28 : caravans.length;
+  const displayCompletedCount = useStaticCounts ? 28 : completedCount;
+  const displayUpcomingCount = useStaticCounts ? 0 : upcomingCount;
+
   return (
     <div className="min-h-screen py-20">
       <div className="container mx-auto px-4">
@@ -55,21 +61,21 @@ const Caravans = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="bg-gradient-card border-border/50 rounded-lg p-6 text-center shadow-soft">
             <div className="text-3xl font-bold text-primary mb-2">
-              {caravans.length}
+              {displayTotalCount}
             </div>
             <div className="text-muted-foreground">إجمالي القوافل</div>
           </div>
 
           <div className="bg-gradient-card border border-border/50 rounded-lg p-6 text-center shadow-soft">
             <div className="text-3xl font-bold text-success mb-2">
-              {completedCount}
+              {displayCompletedCount}
             </div>
             <div className="text-muted-foreground">قوافل مكتملة</div>
           </div>
 
           <div className="bg-gradient-card border border-border/50 rounded-lg p-6 text-center shadow-soft">
             <div className="text-3xl font-bold text-accent mb-2">
-              {upcomingCount}
+              {displayUpcomingCount}
             </div>
             <div className="text-muted-foreground">قوافل قادمة</div>
           </div>
@@ -173,18 +179,18 @@ const Caravans = () => {
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 space-x-reverse mb-2">
                     <h3 className="text-lg font-semibold text-foreground">
-                      نجاح قافلة الحمام الطبية
+                      نجاح قافلة بلال الطبية
                     </h3>
-                    <Badge variant="secondary">15 ديسمبر 2024</Badge>
+                    <Badge variant="secondary">15 سبتمبر 2025</Badge>
                   </div>
                   <p className="text-muted-foreground mb-4">
-                    حققت قافلة قرية الحمام نجاحاً كبيراً حيث استقبلت أكثر من 250
+                    حققت قافلة قرية بلال نجاحاً كبيراً حيث استقبلت أكثر من 250
                     مستفيد من مختلف الأعمار. تم توفير فحوصات طبية شاملة وتوزيع
                     أدوية مجانية بقيمة تزيد عن 15,000 جنيه.
                   </p>
                   <div className="flex items-center space-x-2 space-x-reverse text-sm text-muted-foreground">
                     <MapPin className="h-4 w-4" />
-                    <span>قرية الحمام، البحيرة</span>
+                    <span>قرية بلال، البحيرة</span>
                   </div>
                 </div>
               </div>
@@ -200,18 +206,18 @@ const Caravans = () => {
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 space-x-reverse mb-2">
                     <h3 className="text-lg font-semibold text-foreground">
-                      الإعداد لقافلة النوبارية الجديدة
+                      الإعداد لقافلة السابعة حسن علام
                     </h3>
                     <Badge variant="outline">قادمة</Badge>
                   </div>
                   <p className="text-muted-foreground mb-4">
-                    يجري الإعداد حالياً لقافلة جراحية متخصصة في قرية النوبارية
-                    الجديدة. ستضم القافلة نخبة من أطباء الجراحة العامة وستقدم
-                    خدمات طبية متميزة للمنطقة.
+                    يجري الإعداد حالياً لقافلة جراحية متخصصة في قرية السابعة حسن
+                    علام الجديدة. ستضم القافلة نخبة من أطباء الجراحة العامة
+                    وستقدم خدمات طبية متميزة للمنطقة.
                   </p>
                   <div className="flex items-center space-x-2 space-x-reverse text-sm text-muted-foreground">
                     <MapPin className="h-4 w-4" />
-                    <span>قرية النوبارية الجديدة، البحيرة</span>
+                    <span>قرية السابعة حسن علام، البحيرة</span>
                   </div>
                 </div>
               </div>

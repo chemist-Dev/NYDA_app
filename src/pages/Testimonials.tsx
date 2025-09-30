@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { FormEvent } from "react";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardHeader } from "../components/ui/card";
 import { Textarea } from "../components/ui/textarea";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
-import { Star, Quote, Heart, Users, Send } from "lucide-react";
+import { Star, Quote, Heart, Users, Send, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useForm, ValidationError } from "@formspree/react";
 import { useToast } from "../hooks/use-toast";
 
 const Testimonials = () => {
@@ -13,10 +15,40 @@ const Testimonials = () => {
 
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     type: "member",
     message: "",
     rating: 5,
   });
+
+  // Use the same Formspree form as Contact page
+  const [fsState, fsHandleSubmit] = useForm("mkgvlnka");
+
+  useEffect(() => {
+    if (fsState.succeeded) {
+      toast({
+        title: "تم إرسال تقييمك بنجاح",
+        description: "شكراً لك على مشاركة تجربتك معنا",
+      });
+      setFormData({
+        name: "",
+        email: "",
+        type: "member",
+        message: "",
+        rating: 5,
+      });
+    } else if (
+      fsState.errors &&
+      Array.isArray(fsState.errors) &&
+      fsState.errors.length > 0
+    ) {
+      toast({
+        title: "حدث خطأ",
+        description: "تعذر إرسال الرسالة. حاول مرة أخرى.",
+        variant: "destructive",
+      });
+    }
+  }, [fsState.succeeded, fsState.errors, toast]);
 
   const testimonials = [
     {
@@ -75,10 +107,10 @@ const Testimonials = () => {
     },
   ];
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.message) {
+    if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "خطأ",
         description: "يرجى ملء جميع الحقول المطلوبة",
@@ -86,15 +118,14 @@ const Testimonials = () => {
       });
       return;
     }
-    toast({
-      title: "تم إرسال تقييمك بنجاح",
-      description: "شكراً لك على مشاركة تجربتك معنا",
-    });
-    setFormData({
-      name: "",
-      type: "member",
-      message: "",
-      rating: 5,
+
+    await fsHandleSubmit({
+      name: formData.name,
+      email: formData.email,
+      type: formData.type,
+      rating: String(formData.rating),
+      message: formData.message,
+      source: "Testimonials",
     });
   };
 
@@ -255,6 +286,15 @@ const Testimonials = () => {
           <h2 className="text-3xl font-bold text-center text-foreground mb-12 ">
             شاركنا تجربتك
           </h2>
+          {/* Quick contact CTA linking to the contact form */}
+          <div className="max-w-2xl mx-auto mb-8">
+            <Button asChild variant="outline" className="w-full shadow-medium">
+              <Link to="/contact#contact-form">
+                <MessageCircle className="ml-2 h-4 w-4" />
+                التواصل معنا عبر نموذج الاتصال
+              </Link>
+            </Button>
+          </div>
           <Card className="max-w-2xl mx-auto bg-gradient-card border-border/50">
             <CardHeader>
               <h3 className="text-xl font-semibold text-foreground text-center">
@@ -272,6 +312,24 @@ const Testimonials = () => {
                     onChange={(e) => handleInputChange("name", e.target.value)}
                     placeholder="ادخل اسمك"
                     required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email">* البريد الإلكتروني</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    placeholder="أدخل بريدك الإلكتروني"
+                    required
+                  />
+                  <ValidationError
+                    prefix="Email"
+                    field="email"
+                    errors={fsState.errors}
                   />
                 </div>
                 <div className="space-y-2">
@@ -313,6 +371,7 @@ const Testimonials = () => {
                   <Label htmlFor="message">رسالتك *</Label>
                   <Textarea
                     id="message"
+                    name="message"
                     value={formData.message}
                     onChange={(e) =>
                       handleInputChange("message", e.target.value)
@@ -320,6 +379,11 @@ const Testimonials = () => {
                     placeholder="شاركنا تجربتك وانطباعك عن خدماتنا..."
                     rows={5}
                     required
+                  />
+                  <ValidationError
+                    prefix="Message"
+                    field="message"
+                    errors={fsState.errors}
                   />
                 </div>
 
