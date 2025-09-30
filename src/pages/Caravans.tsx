@@ -17,7 +17,10 @@ const Caravans = () => {
   const [showAll, setShowAll] = useState(false);
   const initialDisplay = 6;
 
-  const caravans: Caravan[] = caravansData.caravans;
+  const caravans: Caravan[] = caravansData.caravans.map((caravan) => ({
+    ...caravan,
+    status: caravan.status === "completed" ? "completed" : "upcoming",
+  }));
 
   const filteredCaravans = caravans.filter((caravan) => {
     if (filter === "all") return true;
