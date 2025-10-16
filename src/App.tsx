@@ -1,5 +1,7 @@
 import { Toaster } from "./components/ui/toaster";
 import { Toaster as Sonner } from "./components/ui/sonner";
+import { Analytics } from "@vercel/analytics/react";
+
 import { TooltipProvider } from "./components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -22,8 +24,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <div className="min-h-screen flex flex-col">
+          <Analytics />
           <Header />
-
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<Home />} />
